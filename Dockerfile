@@ -1,10 +1,9 @@
 FROM runpod/worker-comfyui:5.7.1-base
 
-# Install custom nodes (small, fine to bake in)
+# Install custom nodes (small, ~100MB total)
 RUN comfy-node-install comfyui-ltxvideo comfyui-videohelpersuite
 
-# Download models at startup instead of baking them in
-# This keeps the image small enough for RunPod's GitHub builder
+# Startup script downloads models on first boot
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
