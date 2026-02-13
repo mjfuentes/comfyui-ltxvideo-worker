@@ -23,4 +23,4 @@ download_if_missing /comfyui/models/vae/ltxv_vae.safetensors \
     "https://huggingface.co/Lightricks/LTX-Video/resolve/main/ltxv_vae.safetensors"
 
 echo "[start.sh] All models ready. Starting worker..."
-exec /entrypoint.sh "$@"
+exec /start_original.sh "$@"
