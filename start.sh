@@ -6,7 +6,7 @@ download_if_missing() {
     local url="$2"
     if [ ! -f "$path" ]; then
         echo "[start.sh] Downloading $(basename $path)..."
-        curl -sL -o "$path" "$url"
+        wget -q -O "$path" "$url"
         echo "[start.sh] Done: $(basename $path)"
     else
         echo "[start.sh] Already exists: $(basename $path)"
