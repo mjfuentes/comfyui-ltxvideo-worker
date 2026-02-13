@@ -13,14 +13,14 @@ download_if_missing() {
     fi
 }
 
-download_if_missing /comfyui/models/checkpoints/ltx-video-2b-v0.9.1.safetensors \
-    "https://huggingface.co/Lightricks/LTX-Video/resolve/main/ltx-video-2b-v0.9.1.safetensors"
+# Model v0.9.5 (checkpoint includes VAE)
+download_if_missing /comfyui/models/checkpoints/ltx-video-2b-v0.9.5.safetensors \
+    "https://huggingface.co/Lightricks/LTX-Video/resolve/main/ltx-video-2b-v0.9.5.safetensors"
 
-download_if_missing /comfyui/models/clip/t5xxl_fp16.safetensors \
+# T5 text encoder - goes in text_encoders/ not clip/
+mkdir -p /comfyui/models/text_encoders
+download_if_missing /comfyui/models/text_encoders/t5xxl_fp16.safetensors \
     "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors"
-
-download_if_missing /comfyui/models/vae/ltxv_vae.safetensors \
-    "https://huggingface.co/Lightricks/LTX-Video/resolve/main/ltxv_vae.safetensors"
 
 echo "[start.sh] All models ready. Starting worker..."
 exec /start_original.sh "$@"
